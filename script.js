@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   setCurrentYear();
   initParticles();
+  initThemeToggle();
+  initProjectFilters();
 });
 
 /* ===================== NAVBAR ===================== */
@@ -420,3 +422,85 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     window.scrollTo({ top: targetTop, behavior: 'smooth' });
   });
 });
+
+/* ===================== THEME TOGGLE ===================== */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('themeToggle');
+  const body = document.body;
+  const leetcodeStat = document.getElementById('leetcodeStat');
+  const githubStat = document.getElementById('githubStat');
+  if(!toggleBtn) return;
+
+  // Check local storage for theme
+  const savedTheme = localStorage.getItem('portfolio-theme');
+  if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    updateStatThemes('light');
+  } else {
+    updateStatThemes('dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    const isLight = body.classList.contains('light-mode');
+    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+    updateStatThemes(isLight ? 'light' : 'dark');
+  });
+
+  function updateStatThemes(theme) {
+    if(leetcodeStat) {
+      leetcodeStat.src = `https://leetcard.jacoblin.cool/iUq2lrQgSF?theme=${theme === 'light' ? 'light' : 'dark'}&font=Outfit&ext=heatmap`;
+    }
+    if(githubStat) {
+      githubStat.src = `https://github-readme-stats.vercel.app/api?username=sathiyanarayanan-2008&show_icons=true&theme=${theme === 'light' ? 'default' : 'tokyonight'}`;
+    }
+  }
+}
+
+/* ===================== PROJECT FILTERING ===================== */
+function initProjectFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if(!filterBtns.length || !projectCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterBtns.forEach(b => b.classList.remove('active'));
+      // Add active class to clicked button
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filterValue === 'all' || filterValue === category) {
+          card.classList.remove('hide');
+          // Reset animation by triggering reflow
+          card.style.animation = 'none';
+          card.offsetHeight; 
+          card.style.animation = null; 
+        } else {
+          card.classList.add('hide');
+        }
+      });
+      
+      // Re-trigger reveal animation for newly shown cards
+      setTimeout(() => {
+        ScrollReveal();
+      }, 50);
+    });
+  });
+  
+  function ScrollReveal() {
+    const revealEls = document.querySelectorAll('.reveal:not(.hide)');
+    revealEls.forEach(el => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 50) {
+        el.classList.add('visible');
+      }
+    });
+  }
+}

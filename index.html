@@ -57,6 +57,12 @@
         <li role="none"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
         <li role="none"><a href="#achievements" class="nav-link" role="menuitem">Achievements</a></li>
         <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+        <li role="none">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+          </button>
+        </li>
       </ul>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"
@@ -468,6 +474,33 @@
       </div>
     </section>
 
+    <!-- ===== EXPERIENCE SECTION ===== -->
+    <section id="experience" class="section education-section" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-tag">Work History</p>
+          <h2 id="experience-heading" class="section-title">My <span class="highlight">Experience</span></h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"><i class="fas fa-briefcase"></i></div>
+            <div class="timeline-content">
+              <div class="timeline-badge past">Internship</div>
+              <h3 class="timeline-title">Web Development Intern</h3>
+              <p class="timeline-institute"><i class="fas fa-building"></i> RISE Internship Program</p>
+              <p class="timeline-period"><i class="fas fa-calendar"></i> 2026</p>
+              <p class="timeline-desc" style="color: var(--clr-text-muted); margin-top: 1rem;">
+                Completed an intensive web development internship, learning modern frontend practices.
+                Designed and built a complete responsive personal portfolio website from scratch using HTML5, CSS3, and JavaScript.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== PROJECTS SECTION ===== -->
     <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
       <div class="container">
@@ -477,10 +510,17 @@
           <div class="section-divider"></div>
         </div>
 
+        <div class="project-filters reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+          <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+        </div>
+
         <div class="projects-grid">
 
           <!-- Project 1: SmartCampus -->
-          <article class="project-card reveal" aria-label="SmartCampus project">
+          <article class="project-card reveal" data-category="frontend" aria-label="SmartCampus project">
             <div class="project-header">
               <div class="project-icon"><i class="fas fa-university"></i></div>
               <div class="project-links-top">
@@ -514,7 +554,7 @@
           </article>
 
           <!-- Project 2: rivyuu-connect -->
-          <article class="project-card reveal" aria-label="rivyuu-connect project">
+          <article class="project-card reveal" data-category="fullstack" aria-label="rivyuu-connect project">
             <div class="project-header">
               <div class="project-icon"><i class="fas fa-star"></i></div>
               <div class="project-links-top">
@@ -549,7 +589,7 @@
           </article>
 
           <!-- Project 3: Bot -->
-          <article class="project-card reveal" aria-label="Bot project">
+          <article class="project-card reveal" data-category="backend" aria-label="Bot project">
             <div class="project-header">
               <div class="project-icon"><i class="fas fa-robot"></i></div>
               <div class="project-links-top">
@@ -582,7 +622,7 @@
           </article>
 
           <!-- Project 4: Personal Finance / Expense Tracker -->
-          <article class="project-card reveal" aria-label="Personal Finance Tracker project">
+          <article class="project-card reveal" data-category="frontend" aria-label="Personal Finance Tracker project">
             <div class="project-header">
               <div class="project-icon"><i class="fas fa-wallet"></i></div>
               <div class="project-links-top">
@@ -624,31 +664,21 @@
     <section id="achievements" class="section achievements-section" aria-labelledby="achievements-heading">
       <div class="container">
         <div class="section-header reveal">
-          <p class="section-tag">Milestones</p>
+          <p class="section-tag">Milestones & Stats</p>
           <h2 id="achievements-heading" class="section-title">My <span class="highlight">Achievements</span></h2>
           <div class="section-divider"></div>
         </div>
+        
+        <div class="stats-container reveal" style="margin-bottom: var(--space-3xl); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-md);">
+          <a href="https://leetcode.com/u/iUq2lrQgSF/" target="_blank">
+            <img class="stat-img" src="https://leetcard.jacoblin.cool/iUq2lrQgSF?theme=dark&font=Outfit&ext=heatmap" alt="LeetCode Stats" id="leetcodeStat">
+          </a>
+          <a href="https://github.com/sathiyanarayanan-2008" target="_blank">
+            <img class="stat-img" src="https://github-readme-stats.vercel.app/api?username=sathiyanarayanan-2008&show_icons=true&theme=tokyonight" alt="GitHub Stats" id="githubStat">
+          </a>
+        </div>
 
         <div class="achievements-grid">
-
-          <div class="achievement-card reveal">
-            <div class="achievement-icon"><i class="fas fa-code"></i></div>
-            <div class="achievement-content">
-              <h3 class="achievement-title">170+ Problems on LeetCode</h3>
-              <p class="achievement-desc">Consistently solved 173 algorithmic challenges across Easy, Medium, and Hard difficulties. Ranked 1,001,946 and earned the 50 Days Badge 2026.</p>
-              <span class="achievement-date"><i class="fas fa-calendar"></i> Active</span>
-            </div>
-          </div>
-
-          <div class="achievement-card reveal">
-            <div class="achievement-icon"><i class="fas fa-briefcase"></i></div>
-            <div class="achievement-content">
-              <h3 class="achievement-title">RISE Internship – Web Development</h3>
-              <p class="achievement-desc">Completed the RISE Internship Program focused on web development, building a
-                complete Personal Portfolio Website using HTML, CSS, and JavaScript.</p>
-              <span class="achievement-date"><i class="fas fa-calendar"></i> 2026</span>
-            </div>
-          </div>
 
           <div class="achievement-card reveal">
             <div class="achievement-icon"><i class="fas fa-code"></i></div>
@@ -689,6 +719,78 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BLOG SECTION ===== -->
+    <section id="blog" class="section blog-section" aria-labelledby="blog-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-tag">My Thoughts</p>
+          <h2 id="blog-heading" class="section-title">Latest <span class="highlight">Articles</span></h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="blog-grid">
+          <article class="blog-card reveal">
+            <div class="blog-img">
+              <i class="fab fa-react"></i>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">March 10, 2026</span>
+              <h3 class="blog-title">Getting Started with React and Vite</h3>
+              <p class="blog-desc">My experience building Rivyuu Connect and how Vite makes React development lightning fast.</p>
+              <a href="#" class="btn btn-sm btn-outline" style="margin-top:auto">Read More</a>
+            </div>
+          </article>
+          
+          <article class="blog-card reveal">
+            <div class="blog-img">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="blog-content">
+              <span class="blog-date">February 25, 2026</span>
+              <h3 class="blog-title">How I solved 170+ Leetcode Problems</h3>
+              <p class="blog-desc">A breakdown of my daily coding routine, the data structures that helped most, and tips for beginners.</p>
+              <a href="#" class="btn btn-sm btn-outline" style="margin-top:auto">Read More</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS SECTION ===== -->
+    <section id="testimonials" class="section testimonials-section" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-tag">Recommendations</p>
+          <h2 id="testimonials-heading" class="section-title">What People <span class="highlight">Say</span></h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="testimonial-card reveal">
+            <p class="testimonial-text">"Sathiya is a dedicated learner and a fantastic intern. The portfolio project was completed with excellent attention to detail and modern design practices."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">R</div>
+              <div class="author-info">
+                <h4>RISE Mentor</h4>
+                <p>Lead Developer, RISE Internship</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal">
+            <p class="testimonial-text">"A great team player with strong problem-solving skills. Very impressive progress for a first-year student."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">P</div>
+              <div class="author-info">
+                <h4>Professor Name</h4>
+                <p>Easwari Engineering College</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
