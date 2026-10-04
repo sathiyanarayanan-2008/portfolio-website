@@ -1,0 +1,6 @@
+# Backups
+_backup_original/
+
+# Operating System files
+.DS_Store
+Thumbs.db
