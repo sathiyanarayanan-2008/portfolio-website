@@ -500,9 +500,10 @@ function initCodeCopy() {
 function initCard3DTilt() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  const tiltCards = document.querySelectorAll('.tilt-card, .about-code-window');
+  const tiltCards = document.querySelectorAll('.tilt-card:not([data-tilt-ready]), .about-code-window:not([data-tilt-ready])');
 
   tiltCards.forEach(card => {
+    card.setAttribute('data-tilt-ready', 'true');
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -786,10 +787,10 @@ Check out the "MY DEVELOPER ACTIVITY" section below for live repository metrics.
 `,
     contact: () => `
 [CONTACT CHANNELS]
-• Email: sathyaviji2008@gmail.com
-• LinkedIn: https://www.linkedin.com/in/sathiyanarayanan2008
-• GitHub: https://github.com/sathiyanarayanan-2008
-• LeetCode: https://leetcode.com/u/iUq2lrQgSF/
+• Email: <a href="mailto:sathyaviji2008@gmail.com" style="color:var(--clr-cyan);text-decoration:underline;">sathyaviji2008@gmail.com</a>
+• LinkedIn: <a href="https://www.linkedin.com/in/sathiyanarayanan2008" target="_blank" rel="noopener noreferrer" style="color:var(--clr-cyan);text-decoration:underline;">linkedin.com/in/sathiyanarayanan2008</a>
+• GitHub: <a href="https://github.com/sathiyanarayanan-2008" target="_blank" rel="noopener noreferrer" style="color:var(--clr-cyan);text-decoration:underline;">github.com/sathiyanarayanan-2008</a>
+• LeetCode: <a href="https://leetcode.com/u/iUq2lrQgSF/" target="_blank" rel="noopener noreferrer" style="color:var(--clr-cyan);text-decoration:underline;">leetcode.com/u/iUq2lrQgSF</a>
 `,
     resume: () => `
 [RESUME]
@@ -941,6 +942,16 @@ async function initGitHubActivity() {
 
     if (countLabel) {
       countLabel.innerHTML = `<i class="fab fa-github"></i> ${repos.length} Public Repositories Loaded`;
+    }
+
+    // Attach 3D tilt and cursor interactions to dynamic elements
+    initCard3DTilt();
+    const follower = document.getElementById('cursorFollower');
+    if (follower) {
+      container.querySelectorAll('a, .tilt-card').forEach(el => {
+        el.addEventListener('mouseenter', () => follower.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => follower.classList.remove('hovered'));
+      });
     }
   };
 

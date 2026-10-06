@@ -1672,6 +1672,14 @@ body.light-mode .hero-tagline {
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--clr-cyan);
+  transition: color var(--transition-fast), text-shadow var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.repo-card-name:hover {
+  color: #FFFFFF;
+  text-shadow: 0 0 12px rgba(0, 217, 255, 0.7);
+  transform: translateX(3px);
 }
 
 .repo-card-desc {
@@ -1886,6 +1894,14 @@ body.light-mode .hero-tagline {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--clr-text);
+  transition: color var(--transition-fast), transform var(--transition-fast), text-shadow var(--transition-fast);
+  display: inline-block;
+}
+
+.contact-item-val:hover {
+  color: var(--clr-cyan);
+  transform: translateX(4px);
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
 }
 
 /* Contact Form */

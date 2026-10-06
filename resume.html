@@ -64,7 +64,7 @@
       font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -81,9 +81,15 @@
       color: #fff;
     }
 
-    .btn-print:hover,
+    .btn-print:hover {
+      background: #7c74ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(108, 99, 255, 0.4);
+    }
+
     .btn-back:hover {
-      opacity: 0.85;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
     /* ---- A4 Paper ---- */
@@ -138,6 +144,13 @@
     .r-contact-item a {
       color: #a78bfa;
       text-decoration: none;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .r-contact-item a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
+      text-decoration: underline;
     }
 
     .r-badge {
